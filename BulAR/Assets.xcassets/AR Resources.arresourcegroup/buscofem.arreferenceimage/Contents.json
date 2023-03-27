@@ -1,0 +1,16 @@
+{
+  "images" : [
+    {
+      "filename" : "buscofem-400mg-20-capsulas-1.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "unit" : "centimeters",
+    "width" : 6
+  }
+}
