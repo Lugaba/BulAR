@@ -33,16 +33,20 @@ protocol TableSearchPresenter {
 }
 
 public struct TableSearchFactory {
-    public static func makeController(navigationController: UINavigationController?) -> UIViewController {
-        let view = TableSearchViewImpl()
+    public static func makeController() -> UIViewController {
         let worker = TableSearchWorkerImpl()
-        let viewController = TableSearchViewControllerImpl(screenView: view)
+        let viewController = TableSearchViewControllerImpl()
+        
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.navigationBar.prefersLargeTitles = true
+        
         let router = TableSearchRouterImpl(navigationController: navigationController)
         let presenter = TableSearchPresenterImpl(viewController: viewController)
         let interactor = TableSearchInteractorImpl(presenter: presenter, router: router, worker: worker)
         
         viewController.interactor = interactor
         
-        return viewController
+        
+        return navigationController
     }
 }

@@ -23,6 +23,7 @@
 		81B87D6A29F013120042A39C /* TableSearchInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B87D6929F013120042A39C /* TableSearchInteractorImpl.swift */; };
 		81B87D6C29F0131D0042A39C /* TableSearchFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B87D6B29F0131D0042A39C /* TableSearchFactory.swift */; };
 		81B87D6E29F013590042A39C /* TableSearchRouterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B87D6D29F013590042A39C /* TableSearchRouterImpl.swift */; };
+		81B87D7029F0310C0042A39C /* TableSearchCellImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B87D6F29F0310C0042A39C /* TableSearchCellImpl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		81B87D6929F013120042A39C /* TableSearchInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSearchInteractorImpl.swift; sourceTree = "<group>"; };
 		81B87D6B29F0131D0042A39C /* TableSearchFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSearchFactory.swift; sourceTree = "<group>"; };
 		81B87D6D29F013590042A39C /* TableSearchRouterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSearchRouterImpl.swift; sourceTree = "<group>"; };
+		81B87D6F29F0310C0042A39C /* TableSearchCellImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSearchCellImpl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 				81B87D6929F013120042A39C /* TableSearchInteractorImpl.swift */,
 				81B87D6B29F0131D0042A39C /* TableSearchFactory.swift */,
 				81B87D6D29F013590042A39C /* TableSearchRouterImpl.swift */,
+				81B87D6F29F0310C0042A39C /* TableSearchCellImpl.swift */,
 			);
 			path = TableSearch;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				814E54E129D110900040A2F1 /* ImageRecognitionFactory.swift in Sources */,
 				81B87D6629F012FD0042A39C /* TableSearchWorkerImpl.swift in Sources */,
 				81325C7929D101640063F0E1 /* ViewController.swift in Sources */,
+				81B87D7029F0310C0042A39C /* TableSearchCellImpl.swift in Sources */,
 				81325C7729D101640063F0E1 /* AppDelegate.swift in Sources */,
 				81B87D6E29F013590042A39C /* TableSearchRouterImpl.swift in Sources */,
 				81325C7B29D101640063F0E1 /* Experience.rcproject in Sources */,

@@ -14,8 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         window = UIWindow()
-        window?.rootViewController = TableSearchFactory.makeController(navigationController: UINavigationController())
+        window?.rootViewController = TableSearchFactory.makeController()
         window?.makeKeyAndVisible()
                 
         return true
