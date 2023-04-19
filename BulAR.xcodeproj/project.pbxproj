@@ -15,6 +15,9 @@
 		81325C8D29D101660063F0E1 /* BulARTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81325C8C29D101660063F0E1 /* BulARTests.swift */; };
 		81325C9729D101660063F0E1 /* BulARUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81325C9629D101660063F0E1 /* BulARUITests.swift */; };
 		81325C9929D101660063F0E1 /* BulARUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81325C9829D101660063F0E1 /* BulARUITestsLaunchTests.swift */; };
+		813EEA9C29F05EB200A0CE97 /* Bula.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813EEA9B29F05EB200A0CE97 /* Bula.swift */; };
+		813EEA9E29F05EC300A0CE97 /* Categoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813EEA9D29F05EC300A0CE97 /* Categoria.swift */; };
+		813EEAA029F05ECB00A0CE97 /* Fabricante.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813EEA9F29F05ECB00A0CE97 /* Fabricante.swift */; };
 		814E54E129D110900040A2F1 /* ImageRecognitionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814E54E029D110900040A2F1 /* ImageRecognitionFactory.swift */; };
 		81B87D6229F012E40042A39C /* TableSearchViewControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B87D6129F012E40042A39C /* TableSearchViewControllerImpl.swift */; };
 		81B87D6429F012F10042A39C /* TableSearchPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B87D6329F012F10042A39C /* TableSearchPresenterImpl.swift */; };
@@ -55,6 +58,9 @@
 		81325C9229D101660063F0E1 /* BulARUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BulARUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		81325C9629D101660063F0E1 /* BulARUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulARUITests.swift; sourceTree = "<group>"; };
 		81325C9829D101660063F0E1 /* BulARUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulARUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		813EEA9B29F05EB200A0CE97 /* Bula.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bula.swift; sourceTree = "<group>"; };
+		813EEA9D29F05EC300A0CE97 /* Categoria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categoria.swift; sourceTree = "<group>"; };
+		813EEA9F29F05ECB00A0CE97 /* Fabricante.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fabricante.swift; sourceTree = "<group>"; };
 		814E54E029D110900040A2F1 /* ImageRecognitionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecognitionFactory.swift; sourceTree = "<group>"; };
 		81B87D6129F012E40042A39C /* TableSearchViewControllerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSearchViewControllerImpl.swift; sourceTree = "<group>"; };
 		81B87D6329F012F10042A39C /* TableSearchPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSearchPresenterImpl.swift; sourceTree = "<group>"; };
@@ -114,6 +120,7 @@
 		81325C7529D101640063F0E1 /* BulAR */ = {
 			isa = PBXGroup;
 			children = (
+				813EEA9A29F05E8700A0CE97 /* Models */,
 				81B87D6029F012C60042A39C /* TableSearch */,
 				814E54DF29D1103A0040A2F1 /* ImageRecognition */,
 				81325C7629D101640063F0E1 /* AppDelegate.swift */,
@@ -139,6 +146,16 @@
 				81325C9829D101660063F0E1 /* BulARUITestsLaunchTests.swift */,
 			);
 			path = BulARUITests;
+			sourceTree = "<group>";
+		};
+		813EEA9A29F05E8700A0CE97 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				813EEA9B29F05EB200A0CE97 /* Bula.swift */,
+				813EEA9D29F05EC300A0CE97 /* Categoria.swift */,
+				813EEA9F29F05ECB00A0CE97 /* Fabricante.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		814E54DF29D1103A0040A2F1 /* ImageRecognition */ = {
@@ -298,11 +315,14 @@
 				81B87D6229F012E40042A39C /* TableSearchViewControllerImpl.swift in Sources */,
 				814E54E129D110900040A2F1 /* ImageRecognitionFactory.swift in Sources */,
 				81B87D6629F012FD0042A39C /* TableSearchWorkerImpl.swift in Sources */,
+				813EEAA029F05ECB00A0CE97 /* Fabricante.swift in Sources */,
 				81325C7929D101640063F0E1 /* ViewController.swift in Sources */,
 				81B87D7029F0310C0042A39C /* TableSearchCellImpl.swift in Sources */,
 				81325C7729D101640063F0E1 /* AppDelegate.swift in Sources */,
 				81B87D6E29F013590042A39C /* TableSearchRouterImpl.swift in Sources */,
+				813EEA9C29F05EB200A0CE97 /* Bula.swift in Sources */,
 				81325C7B29D101640063F0E1 /* Experience.rcproject in Sources */,
+				813EEA9E29F05EC300A0CE97 /* Categoria.swift in Sources */,
 				81B87D6A29F013120042A39C /* TableSearchInteractorImpl.swift in Sources */,
 				81B87D6429F012F10042A39C /* TableSearchPresenterImpl.swift in Sources */,
 				81B87D6829F013060042A39C /* TableSearchViewImpl.swift in Sources */,

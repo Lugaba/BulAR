@@ -18,4 +18,13 @@ class TableSearchInteractorImpl: TableSearchInteractor {
         self.router = router
         self.worker = worker
     }
+    
+    func getMedicineList() {
+        worker.fetchMedicineList { [weak self] bulas, error in
+            if let bulas = bulas {
+                self?.presenter.showMedicineList(list: bulas)
+                print(bulas[0].categorias)
+            }
+        }
+    }
 }

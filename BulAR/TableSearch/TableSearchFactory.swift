@@ -9,11 +9,11 @@ import Foundation
 import UIKit
 
 protocol TableSearchInteractor {
-    
+    func getMedicineList()
 }
 
 protocol TableSearchViewController: UITableViewController {
-    
+    func showMedicineList(list: [Bula])
 }
 
 protocol TableSearchRouter {
@@ -25,11 +25,11 @@ protocol TableSearchView: UIView {
 }
 
 protocol TableSearchWorker {
-    
+    func fetchMedicineList(completion: @escaping ([Bula]?, Error?) -> Void)
 }
 
 protocol TableSearchPresenter {
-    
+    func showMedicineList(list: [Bula])
 }
 
 public struct TableSearchFactory {

@@ -10,8 +10,8 @@ import UIKit
 
 class TableSearchViewControllerImpl: UITableViewController, TableSearchViewController {
     var interactor: TableSearchInteractor?
-    var data = ["Apple", "Banana", "Cherry", "Durian", "Elderberry", "Fig", "Grape", "Honeydew", "Jackfruit", "Kiwi"]
-    var filteredData = [String]()
+    var data = [Bula]()
+    var filteredData = [Bula]()
     let searchController = UISearchController(searchResultsController: nil)
     
     init(interactor: TableSearchInteractor? = nil) {
@@ -25,8 +25,10 @@ class TableSearchViewControllerImpl: UITableViewController, TableSearchViewContr
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        interactor?.getMedicineList()
+        
         title = "Pesquisar bula"
-        filteredData = data
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -47,7 +49,7 @@ class TableSearchViewControllerImpl: UITableViewController, TableSearchViewContr
         
         content.image = UIImage(named: "tylenol")
         content.imageProperties.maximumSize = CGSize(width: 60, height: 60)
-        content.text = item
+        content.text = item.nome
         content.secondaryText = "Analgésico"
         
         cell.contentConfiguration = content
@@ -55,6 +57,14 @@ class TableSearchViewControllerImpl: UITableViewController, TableSearchViewContr
         return cell
     }
     
+    func showMedicineList(list: [Bula]) {
+        data = list
+        filteredData = data
+        DispatchQueue.main.sync {
+            tableView.reloadData()
+        }
+    }
+
 }
 
 
@@ -63,7 +73,7 @@ extension TableSearchViewControllerImpl: UISearchResultsUpdating {
         guard let searchText = searchController.searchBar.text else {
             return
         }
-        filteredData = searchText.isEmpty ? data : data.filter { $0.lowercased().contains(searchText.lowercased()) }
+        filteredData = searchText.isEmpty ? data : data.filter { $0.nome.lowercased().contains(searchText.lowercased()) }
         tableView.reloadData()
     }
 }
