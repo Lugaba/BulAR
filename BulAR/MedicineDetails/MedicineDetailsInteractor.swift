@@ -10,14 +10,14 @@ import UIKit
 
 class MedicineDetailsInteractorImpl: MedicineDetailsInteractor {
     private var presenter: MedicineDetailsPresenter
-    private var router: MedicineDetailsRouter
     private var bula: Bula
     
-    init(presenter: MedicineDetailsPresenter, router: MedicineDetailsRouter, bula: Bula) {
+    init(presenter: MedicineDetailsPresenter, bula: Bula) {
         self.presenter = presenter
-        self.router = router
         self.bula = bula
-        
-        print(bula)
+    }
+    
+    func showMedicineDetails() {
+        presenter.showMedicineDetails(bula: self.bula)
     }
 }

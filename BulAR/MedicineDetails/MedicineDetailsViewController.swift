@@ -10,10 +10,12 @@ import UIKit
 
 class MedicineDetailsViewControllerImpl: UITableViewController, MedicineDetailsViewController {
     var interactor: MedicineDetailsInteractor?
+    private var router: MedicineDetailsRouter
     var viewScreen: MedicineDetailsView
     
-    init(viewScreen: MedicineDetailsView, interactor: MedicineDetailsInteractor? = nil) {
+    init(viewScreen: MedicineDetailsView, router: MedicineDetailsRouter, interactor: MedicineDetailsInteractor? = nil) {
         self.interactor = interactor
+        self.router = router
         self.viewScreen = viewScreen
         super.init(nibName: nil, bundle: nil)
     }
@@ -28,5 +30,14 @@ class MedicineDetailsViewControllerImpl: UITableViewController, MedicineDetailsV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        interactor?.showMedicineDetails()
+    }
+    
+    func showMedicineDetails(bula: Bula) {
+        viewScreen.showMedicineDetails(bula: bula)
+    }
+    
+    func closeModal() {
+        router.closeModal()
     }
 }

@@ -14,4 +14,8 @@ class MedicineDetailsRouterImpl: MedicineDetailsRouter {
     init(navigationController: UINavigationController?) {
         self.navigationController = navigationController
     }
+    
+    func closeModal() {
+        navigationController?.dismiss(animated: true)
+    }
 }

@@ -16,4 +16,7 @@ class MedicineDetailsPresenterImpl: MedicineDetailsPresenter {
         self.viewController = viewController
     }
 
+    func showMedicineDetails(bula: Bula) {
+        viewController.showMedicineDetails(bula: bula)
+    }
 }
