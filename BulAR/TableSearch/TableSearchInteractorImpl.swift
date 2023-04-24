@@ -27,4 +27,8 @@ class TableSearchInteractorImpl: TableSearchInteractor {
             }
         }
     }
+    
+    func goToMedicineDetails(bula: Bula) {
+        router.goToMedicineDetails(bula: bula)
+    }
 }

@@ -10,6 +10,7 @@ import UIKit
 
 protocol TableSearchInteractor {
     func getMedicineList()
+    func goToMedicineDetails(bula: Bula)
 }
 
 protocol TableSearchViewController: UITableViewController {
@@ -17,7 +18,7 @@ protocol TableSearchViewController: UITableViewController {
 }
 
 protocol TableSearchRouter {
-    
+    func goToMedicineDetails(bula: Bula)
 }
 
 protocol TableSearchView: UIView {

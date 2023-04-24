@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Fabricante: Codable {
+public struct Fabricante: Codable {
     var id: Int
     var nome: String
     var endereco: String

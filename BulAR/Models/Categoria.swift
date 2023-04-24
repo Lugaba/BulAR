@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Categoria: Codable {
+public struct Categoria: Codable {
     var id: Int
     var nome: String
     

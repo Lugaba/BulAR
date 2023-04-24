@@ -14,4 +14,10 @@ class TableSearchRouterImpl: TableSearchRouter {
     init(navigationController: UINavigationController?) {
         self.navigationController = navigationController
     }
+    
+    func goToMedicineDetails(bula: Bula) {
+        let viewController = MedicineDetailsFactory.makeController(bula: bula, navigationController: navigationController)
+        
+        navigationController?.present(viewController, animated: true)
+    }
 }

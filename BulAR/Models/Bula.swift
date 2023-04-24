@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Bula: Codable {
+public struct Bula: Codable {
     var id: Int
     var nome: String
     var indicacao: String

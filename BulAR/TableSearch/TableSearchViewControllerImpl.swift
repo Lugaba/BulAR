@@ -44,17 +44,27 @@ class TableSearchViewControllerImpl: UITableViewController, TableSearchViewContr
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "MyCell")
         
-        var item = filteredData[indexPath.row]
+        let item = filteredData[indexPath.row]
         var content = cell.defaultContentConfiguration()
         
         content.image = UIImage(named: "tylenol")
         content.imageProperties.maximumSize = CGSize(width: 60, height: 60)
         content.text = item.nome
-        content.secondaryText = "Analgésico"
+        
+        var caption = ""
+        for categoria in item.categorias {
+            caption += categoria.nome + " | "
+        }
+        
+        content.secondaryText = caption
         
         cell.contentConfiguration = content
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        interactor?.goToMedicineDetails(bula: filteredData[indexPath.row])
     }
     
     func showMedicineList(list: [Bula]) {
