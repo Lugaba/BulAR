@@ -30,7 +30,9 @@ protocol MedicineDetailsPresenter {
 
 public struct MedicineDetailsFactory {
     public static func makeController(bula: Bula, navigationController: UINavigationController?) -> UIViewController {
-        let viewController = MedicineDetailsViewControllerImpl()
+        
+        let view = MedicineDetailsViewImpl()
+        let viewController = MedicineDetailsViewControllerImpl(viewScreen: view)
 
         
         let router = MedicineDetailsRouterImpl(navigationController: navigationController)
@@ -38,6 +40,7 @@ public struct MedicineDetailsFactory {
         let interactor = MedicineDetailsInteractorImpl(presenter: presenter, router: router, bula: bula)
         
         viewController.interactor = interactor
+        view.viewController = viewController
         
         
         return viewController
