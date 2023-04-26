@@ -32,6 +32,8 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
     
     lazy var nameTitle: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         return label
@@ -39,6 +41,8 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
     
     lazy var caption: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .caption1)
         return label
@@ -47,6 +51,8 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
     lazy var indicacaoTitle: UILabel = {
         let label = UILabel()
         label.text = "Indicação"
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .title1)
         return label
@@ -65,6 +71,8 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 23)
         label.text = "Posologia"
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .title1)
         return label
@@ -83,6 +91,8 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 23)
         label.text = "Contraindicação"
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .title1)
         return label
@@ -101,6 +111,8 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 23)
         label.text = "Efeitos colaterais"
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .title1)
         return label
@@ -119,6 +131,8 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 23)
         label.text = "Fabricante"
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .title1)
         return label
@@ -140,6 +154,10 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         button.setTitle("Ver bula completa", for: .normal)
         button.addTarget(self, action: #selector(openUrlSafari), for: .touchUpInside)
         button.tintColor = .white
+        button.titleLabel?.numberOfLines = 0
+        button.titleLabel?.lineBreakMode = .byWordWrapping
+        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
+        button.titleLabel?.adjustsFontForContentSizeCategory = true
         return button
     }()
     
@@ -265,7 +283,7 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         bulaCompleta.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
         bulaCompleta.trailingAnchor.constraint(equalTo: nameTitle.trailingAnchor).isActive = true
         bulaCompleta.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        bulaCompleta.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        bulaCompleta.heightAnchor.constraint(greaterThanOrEqualToConstant: 40).isActive = true
     }
     
     func showMedicineDetails(bula: Bula) {
