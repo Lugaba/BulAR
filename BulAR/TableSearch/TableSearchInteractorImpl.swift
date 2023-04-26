@@ -10,12 +10,10 @@ import UIKit
 
 class TableSearchInteractorImpl: TableSearchInteractor {
     private var presenter: TableSearchPresenter
-    private var router: TableSearchRouter
     private var worker: TableSearchWorker
     
-    init(presenter: TableSearchPresenter, router: TableSearchRouter, worker: TableSearchWorker) {
+    init(presenter: TableSearchPresenter, worker: TableSearchWorker) {
         self.presenter = presenter
-        self.router = router
         self.worker = worker
     }
     
@@ -23,12 +21,7 @@ class TableSearchInteractorImpl: TableSearchInteractor {
         worker.fetchMedicineList { [weak self] bulas, error in
             if let bulas = bulas {
                 self?.presenter.showMedicineList(list: bulas)
-                print(bulas[0].categorias)
             }
         }
-    }
-    
-    func goToMedicineDetails(bula: Bula) {
-        router.goToMedicineDetails(bula: bula)
     }
 }

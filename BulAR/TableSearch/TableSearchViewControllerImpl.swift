@@ -10,12 +10,14 @@ import UIKit
 
 class TableSearchViewControllerImpl: UITableViewController, TableSearchViewController {
     var interactor: TableSearchInteractor?
+    var router: TableSearchRouter?
     var data = [Bula]()
     var filteredData = [Bula]()
     let searchController = UISearchController(searchResultsController: nil)
     
-    init(interactor: TableSearchInteractor? = nil) {
+    init(router: TableSearchRouter? = nil, interactor: TableSearchInteractor? = nil) {
         self.interactor = interactor
+        self.router = router
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -52,8 +54,11 @@ class TableSearchViewControllerImpl: UITableViewController, TableSearchViewContr
         content.text = item.nome
         
         var caption = ""
-        for categoria in item.categorias {
-            caption += categoria.nome + " | "
+        for index in 0..<item.categorias.count {
+            caption += item.categorias[index].nome
+            if index < item.categorias.count-1 {
+                caption += " | "
+            }
         }
         
         content.secondaryText = caption
@@ -64,7 +69,7 @@ class TableSearchViewControllerImpl: UITableViewController, TableSearchViewContr
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        interactor?.goToMedicineDetails(bula: filteredData[indexPath.row])
+        router?.goToMedicineDetails(bula: filteredData[indexPath.row])
     }
     
     func showMedicineList(list: [Bula]) {

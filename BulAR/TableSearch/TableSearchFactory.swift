@@ -10,7 +10,6 @@ import UIKit
 
 protocol TableSearchInteractor {
     func getMedicineList()
-    func goToMedicineDetails(bula: Bula)
 }
 
 protocol TableSearchViewController: UITableViewController {
@@ -36,16 +35,20 @@ protocol TableSearchPresenter {
 public struct TableSearchFactory {
     public static func makeController() -> UIViewController {
         let worker = TableSearchWorkerImpl()
-        let viewController = TableSearchViewControllerImpl()
         
+        let viewController = TableSearchViewControllerImpl()
+
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.navigationBar.prefersLargeTitles = true
         
         let router = TableSearchRouterImpl(navigationController: navigationController)
+
+        
         let presenter = TableSearchPresenterImpl(viewController: viewController)
-        let interactor = TableSearchInteractorImpl(presenter: presenter, router: router, worker: worker)
+        let interactor = TableSearchInteractorImpl(presenter: presenter, worker: worker)
         
         viewController.interactor = interactor
+        viewController.router = router
         
         
         return navigationController

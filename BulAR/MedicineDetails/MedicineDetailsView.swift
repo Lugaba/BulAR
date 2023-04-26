@@ -10,6 +10,7 @@ import UIKit
 
 class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
     var viewController: MedicineDetailsViewController?
+    var bulaUrl = ""
     
     lazy var closeButton: UIButton = {
         let button = UIButton(type: .system)
@@ -24,15 +25,6 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         return scrollView
     }()
     
-    lazy var stackView: UIStackView = {
-       let stack = UIStackView()
-        stack.axis = .vertical
-        stack.alignment = .leading
-        stack.distribution = .equalSpacing
-        stack.spacing = 8.0
-        return stack
-    }()
-    
     lazy var contentView: UIView = {
         let view = UIView()
         return view
@@ -40,20 +32,23 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
     
     lazy var nameTitle: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 33)
+        label.adjustsFontForContentSizeCategory = true
+        label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         return label
     }()
     
     lazy var caption: UILabel = {
         let label = UILabel()
-        label.font = label.font.withSize(16)
+        label.adjustsFontForContentSizeCategory = true
+        label.font = UIFont.preferredFont(forTextStyle: .caption1)
         return label
     }()
     
     lazy var indicacaoTitle: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 23)
         label.text = "Indicação"
+        label.adjustsFontForContentSizeCategory = true
+        label.font = UIFont.preferredFont(forTextStyle: .title1)
         return label
     }()
     
@@ -61,6 +56,8 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         let label = UILabel()
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
+        label.adjustsFontForContentSizeCategory = true
+        label.font = UIFont.preferredFont(forTextStyle: .body)
         return label
     }()
     
@@ -68,6 +65,8 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 23)
         label.text = "Posologia"
+        label.adjustsFontForContentSizeCategory = true
+        label.font = UIFont.preferredFont(forTextStyle: .title1)
         return label
     }()
     
@@ -75,6 +74,8 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         let label = UILabel()
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
+        label.adjustsFontForContentSizeCategory = true
+        label.font = UIFont.preferredFont(forTextStyle: .body)
         return label
     }()
     
@@ -82,6 +83,8 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 23)
         label.text = "Contraindicação"
+        label.adjustsFontForContentSizeCategory = true
+        label.font = UIFont.preferredFont(forTextStyle: .title1)
         return label
     }()
     
@@ -89,6 +92,8 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         let label = UILabel()
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
+        label.adjustsFontForContentSizeCategory = true
+        label.font = UIFont.preferredFont(forTextStyle: .body)
         return label
     }()
     
@@ -96,6 +101,8 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 23)
         label.text = "Efeitos colaterais"
+        label.adjustsFontForContentSizeCategory = true
+        label.font = UIFont.preferredFont(forTextStyle: .title1)
         return label
     }()
     
@@ -103,12 +110,43 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         let label = UILabel()
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
+        label.adjustsFontForContentSizeCategory = true
+        label.font = UIFont.preferredFont(forTextStyle: .body)
         return label
+    }()
+    
+    lazy var fabricanteTitle: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 23)
+        label.text = "Fabricante"
+        label.adjustsFontForContentSizeCategory = true
+        label.font = UIFont.preferredFont(forTextStyle: .title1)
+        return label
+    }()
+    
+    lazy var fabricante: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontForContentSizeCategory = true
+        label.font = UIFont.preferredFont(forTextStyle: .body)
+        return label
+    }()
+    
+    lazy var bulaCompleta: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 10
+        button.setTitle("Ver bula completa", for: .normal)
+        button.addTarget(self, action: #selector(openUrlSafari), for: .touchUpInside)
+        button.tintColor = .white
+        return button
     }()
     
     init() {
         super.init(frame: .zero)
         backgroundColor = .white
+        
         setupHierarchy()
         setupConstraints()
     }
@@ -121,17 +159,20 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         addSubview(closeButton)
         
         addSubview(scrollView)
-        scrollView.addSubview(stackView)
-        stackView.addArrangedSubview(nameTitle)
-        stackView.addArrangedSubview(caption)
-        stackView.addArrangedSubview(indicacaoTitle)
-        stackView.addArrangedSubview(indicacao)
-        stackView.addArrangedSubview(posologiaTitle)
-        stackView.addArrangedSubview(posologia)
-        stackView.addArrangedSubview(contraindicacaoTitle)
-        stackView.addArrangedSubview(contraindicacao)
-        stackView.addArrangedSubview(colateralTitle)
-        stackView.addArrangedSubview(colateral)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(nameTitle)
+        contentView.addSubview(caption)
+        contentView.addSubview(indicacaoTitle)
+        contentView.addSubview(indicacao)
+        contentView.addSubview(posologiaTitle)
+        contentView.addSubview(posologia)
+        contentView.addSubview(contraindicacaoTitle)
+        contentView.addSubview(contraindicacao)
+        contentView.addSubview(colateralTitle)
+        contentView.addSubview(colateral)
+        contentView.addSubview(fabricanteTitle)
+        contentView.addSubview(fabricante)
+        contentView.addSubview(bulaCompleta)
     }
     
     func setupConstraints() {
@@ -139,63 +180,123 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         
         closeButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 24).isActive = true
         closeButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
+        closeButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        closeButton.widthAnchor.constraint(equalToConstant: 32).isActive = true
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.topAnchor.constraint(equalTo: closeButton.topAnchor, constant: 32).isActive = true
         scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        scrollView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: bulaCompleta.bottomAnchor).isActive = true
+    
         
-        indicacao.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -32).isActive = true
-        posologia.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -32).isActive = true
-        contraindicacao.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -32).isActive = true
-        colateral.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -32).isActive = true
+        nameTitle.translatesAutoresizingMaskIntoConstraints = false
         
+        nameTitle.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        nameTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
+        nameTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         
-//        nameTitle.translatesAutoresizingMaskIntoConstraints = false
-//
-//        nameTitle.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-//        nameTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 28).isActive = true
-//        nameTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 16).isActive = true
-//
-//        caption.translatesAutoresizingMaskIntoConstraints = false
-//
-//        caption.topAnchor.constraint(equalTo: nameTitle.bottomAnchor, constant: 4).isActive = true
-//        caption.leadingAnchor.constraint(equalTo: nameTitle.leadingAnchor).isActive = true
-//        caption.trailingAnchor.constraint(equalTo: nameTitle.trailingAnchor).isActive = true
-//
-//        indicacao.translatesAutoresizingMaskIntoConstraints = false
-//        indicacao.topAnchor.constraint(equalTo: caption.bottomAnchor, constant: 16).isActive = true
-//        indicacao.trailingAnchor.constraint(equalTo: caption.trailingAnchor).isActive = true
-//        indicacao.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
-//        indicacao.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        caption.translatesAutoresizingMaskIntoConstraints = false
+        
+        caption.topAnchor.constraint(equalTo: nameTitle.bottomAnchor, constant: 4).isActive = true
+        caption.leadingAnchor.constraint(equalTo: nameTitle.leadingAnchor).isActive = true
+        caption.trailingAnchor.constraint(equalTo: nameTitle.trailingAnchor).isActive = true
+        
+        indicacaoTitle.translatesAutoresizingMaskIntoConstraints = false
+        
+        indicacaoTitle.topAnchor.constraint(equalTo: caption.bottomAnchor, constant: 16).isActive = true
+        indicacaoTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
+        indicacaoTitle.trailingAnchor.constraint(equalTo: nameTitle.trailingAnchor).isActive = true
+        
+        indicacao.translatesAutoresizingMaskIntoConstraints = false
+        
+        indicacao.topAnchor.constraint(equalTo: indicacaoTitle.bottomAnchor, constant: 4).isActive = true
+        indicacao.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
+        indicacao.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        
+        posologiaTitle.translatesAutoresizingMaskIntoConstraints = false
+        posologiaTitle.topAnchor.constraint(equalTo: indicacao.bottomAnchor, constant: 16).isActive = true
+        posologiaTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
+        posologiaTitle.trailingAnchor.constraint(equalTo: nameTitle.trailingAnchor).isActive = true
+        
+        posologia.translatesAutoresizingMaskIntoConstraints = false
+        posologia.topAnchor.constraint(equalTo: posologiaTitle.bottomAnchor, constant: 4).isActive = true
+        posologia.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
+        posologia.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        
+        contraindicacaoTitle.translatesAutoresizingMaskIntoConstraints = false
+        contraindicacaoTitle.topAnchor.constraint(equalTo: posologia.bottomAnchor, constant: 16).isActive = true
+        contraindicacaoTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
+        contraindicacaoTitle.trailingAnchor.constraint(equalTo: nameTitle.trailingAnchor).isActive = true
+        
+        contraindicacao.translatesAutoresizingMaskIntoConstraints = false
+        contraindicacao.topAnchor.constraint(equalTo: contraindicacaoTitle.bottomAnchor, constant: 4).isActive = true
+        contraindicacao.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
+        contraindicacao.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        
+        colateralTitle.translatesAutoresizingMaskIntoConstraints = false
+        colateralTitle.topAnchor.constraint(equalTo: contraindicacao.bottomAnchor, constant: 16).isActive = true
+        colateralTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
+        colateralTitle.trailingAnchor.constraint(equalTo: nameTitle.trailingAnchor).isActive = true
+        
+        colateral.translatesAutoresizingMaskIntoConstraints = false
+        colateral.topAnchor.constraint(equalTo: colateralTitle.bottomAnchor, constant: 4).isActive = true
+        colateral.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
+        colateral.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        
+        fabricanteTitle.translatesAutoresizingMaskIntoConstraints = false
+        fabricanteTitle.topAnchor.constraint(equalTo: colateral.bottomAnchor, constant: 16).isActive = true
+        fabricanteTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
+        fabricanteTitle.trailingAnchor.constraint(equalTo: nameTitle.trailingAnchor).isActive = true
+        
+        fabricante.translatesAutoresizingMaskIntoConstraints = false
+        fabricante.topAnchor.constraint(equalTo: fabricanteTitle.bottomAnchor, constant: 4).isActive = true
+        fabricante.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
+        fabricante.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        
+        bulaCompleta.translatesAutoresizingMaskIntoConstraints = false
+        bulaCompleta.topAnchor.constraint(equalTo: fabricante.bottomAnchor, constant: 24).isActive = true
+        bulaCompleta.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
+        bulaCompleta.trailingAnchor.constraint(equalTo: nameTitle.trailingAnchor).isActive = true
+        bulaCompleta.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        bulaCompleta.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
     func showMedicineDetails(bula: Bula) {
         nameTitle.text = bula.nome
         
         var textCaption = ""
-        for categoria in bula.categorias {
-            textCaption += categoria.nome + ", "
+        for index in 0..<bula.categorias.count {
+            textCaption += bula.categorias[index].nome
+            if index < bula.categorias.count-1 {
+                textCaption += ", "
+            }
         }
         caption.text = textCaption
         
-        indicacao.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        posologia.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        contraindicacao.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        colateral.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        indicacao.text = bula.indicacao
+        posologia.text = bula.posologia
+        contraindicacao.text = bula.contraindicacao
+        colateral.text = bula.efeitosColaterais
+        bulaUrl = bula.bulaCompletaURL
+        
+        fabricante.text = "\(bula.fabricante.nome)\n\(bula.fabricante.endereco)\n\(bula.fabricante.email)\n\(bula.fabricante.telefone)"
     }
     
     @objc
     private func closeModal() {
         viewController?.closeModal()
+    }
+    
+    @objc func openUrlSafari() {
+        if let url = URL(string: bulaUrl) {
+            UIApplication.shared.open(url)
+        }
     }
 }
