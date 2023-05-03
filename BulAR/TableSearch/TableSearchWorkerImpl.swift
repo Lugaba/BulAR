@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class TableSearchWorkerImpl: TableSearchWorker {
     func fetchMedicineList(completion: @escaping ([Bula]?, Error?) -> Void) {
@@ -43,5 +44,20 @@ class TableSearchWorkerImpl: TableSearchWorker {
         task.resume()
     }
     
-
-}
+    func fetchMedicineImage(imageURL: String, completion: @escaping (UIImage?, Error?) -> Void) {
+        if let url = URL(string: imageURL) {
+            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+                if let data = data {
+                    let image = UIImage(data: data)
+                    completion(image, nil)
+                } else {
+                    completion(nil, error)
+                }
+            }
+            
+            task.resume()
+        }
+    }
+        
+        
+    }

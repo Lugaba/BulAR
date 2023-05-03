@@ -10,6 +10,7 @@ import UIKit
 
 protocol TableSearchInteractor {
     func getMedicineList()
+    func getMedicineImage(imageURL: String, completion: @escaping (UIImage) -> Void)
 }
 
 protocol TableSearchViewController: UITableViewController {
@@ -26,6 +27,7 @@ protocol TableSearchView: UIView {
 
 protocol TableSearchWorker {
     func fetchMedicineList(completion: @escaping ([Bula]?, Error?) -> Void)
+    func fetchMedicineImage(imageURL: String, completion: @escaping (UIImage?, Error?) -> Void)
 }
 
 protocol TableSearchPresenter {

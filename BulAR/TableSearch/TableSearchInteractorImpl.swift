@@ -24,4 +24,12 @@ class TableSearchInteractorImpl: TableSearchInteractor {
             }
         }
     }
+    
+    func getMedicineImage(imageURL: String, completion: @escaping (UIImage) -> Void) {
+        worker.fetchMedicineImage(imageURL: imageURL) { image, error in
+            if let image = image {
+                completion(image)
+            }
+        }
+    }
 }

@@ -28,6 +28,8 @@ class TableSearchViewControllerImpl: UITableViewController, TableSearchViewContr
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellIdentifier")
+
         interactor?.getMedicineList()
         
         title = "Pesquisar bula"
@@ -44,12 +46,22 @@ class TableSearchViewControllerImpl: UITableViewController, TableSearchViewContr
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "MyCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for: indexPath)
         
         let item = filteredData[indexPath.row]
         var content = cell.defaultContentConfiguration()
+                
+        if let firstImageURL = item.imagesURL.first {
+            interactor?.getMedicineImage(imageURL: firstImageURL) { image in
+                
+                DispatchQueue.main.async {
+                    // Atualizamos a imagem na main thread
+                    content.image = image
+                    cell.contentConfiguration = content
+                }
+            }
+        }
         
-        content.image = UIImage(named: "tylenol")
         content.imageProperties.maximumSize = CGSize(width: 60, height: 60)
         content.text = item.nome
         
@@ -79,7 +91,7 @@ class TableSearchViewControllerImpl: UITableViewController, TableSearchViewContr
             tableView.reloadData()
         }
     }
-
+    
 }
 
 
@@ -88,7 +100,14 @@ extension TableSearchViewControllerImpl: UISearchResultsUpdating {
         guard let searchText = searchController.searchBar.text else {
             return
         }
-        filteredData = searchText.isEmpty ? data : data.filter { $0.nome.lowercased().contains(searchText.lowercased()) }
+        filteredData = searchText.isEmpty ? data : data.filter {
+            bula in
+            let hasName = bula.nome.lowercased().contains(searchText.lowercased())
+            let hasCategory = bula.categorias.contains { categoria in
+                categoria.nome.lowercased().contains(searchText.lowercased())
+            }
+            return hasName || hasCategory
+        }
         tableView.reloadData()
     }
 }
