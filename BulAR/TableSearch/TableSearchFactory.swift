@@ -11,6 +11,7 @@ import UIKit
 protocol TableSearchInteractor {
     func getMedicineList()
     func getMedicineImage(imageURL: String, completion: @escaping (UIImage) -> Void)
+    var imageCash: NSCache<NSString, UIImage> { get }
 }
 
 protocol TableSearchViewController: UITableViewController {

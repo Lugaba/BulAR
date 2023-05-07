@@ -51,15 +51,17 @@ class TableSearchViewControllerImpl: UITableViewController, TableSearchViewContr
         let item = filteredData[indexPath.row]
         var content = cell.defaultContentConfiguration()
                 
-        if let firstImageURL = item.imagesURL.first {
-            interactor?.getMedicineImage(imageURL: firstImageURL) { image in
-                
-                DispatchQueue.main.async {
-                    // Atualizamos a imagem na main thread
+        if var firstImageURL = item.imagesURL.first {
+            if let cachedImage = interactor?.imageCash.object(forKey: NSString(string: firstImageURL)) {
+                content.image = cachedImage
+            } else {
+                interactor?.getMedicineImage(imageURL: firstImageURL, completion: { image in
                     content.image = image
                     cell.contentConfiguration = content
-                }
+                })
             }
+            cell.contentConfiguration = content
+
         }
         
         content.imageProperties.maximumSize = CGSize(width: 60, height: 60)

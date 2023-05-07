@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import FirebaseStorage
 import UIKit
 
 class TableSearchWorkerImpl: TableSearchWorker {
     func fetchMedicineList(completion: @escaping ([Bula]?, Error?) -> Void) {
-        let urlString = "http://localhost:8080/bulas"
+        let urlString = "https://tcc-bula.herokuapp.com/bulas"
         
         guard let url = URL(string: urlString) else {
             completion(nil, NSError(domain: "Invalid URL", code: 0, userInfo: nil))
@@ -45,17 +46,18 @@ class TableSearchWorkerImpl: TableSearchWorker {
     }
     
     func fetchMedicineImage(imageURL: String, completion: @escaping (UIImage?, Error?) -> Void) {
-        if let url = URL(string: imageURL) {
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-                if let data = data {
-                    let image = UIImage(data: data)
-                    completion(image, nil)
+        let reference = Storage.storage().reference(withPath: imageURL)
+        DispatchQueue.global(qos: .utility).async {
+            reference.getData(maxSize: (1 * 1024 * 1024)) { data, error in
+                if let err = error {
+                    completion(nil, err)
                 } else {
-                    completion(nil, error)
+                    if let image = data {
+                        let myImage: UIImage! = UIImage(data: image)
+                        completion(myImage, nil)
+                    }
                 }
             }
-            
-            task.resume()
         }
     }
         

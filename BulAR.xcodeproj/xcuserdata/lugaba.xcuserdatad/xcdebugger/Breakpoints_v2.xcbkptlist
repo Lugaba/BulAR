@@ -46,8 +46,8 @@
             filePath = "BulAR/TableSearch/TableSearchInteractorImpl.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "getMedicineList()"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "BulAR/TableSearch/TableSearchViewControllerImpl.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "updateSearchResults(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "BulAR/TableSearch/TableSearchInteractorImpl.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "getMedicineImage(imageURL:completion:)"
             landmarkType = "7">
             <Locations>
@@ -112,6 +112,54 @@
                   startingLineNumber = "30"
                   endingLineNumber = "30"
                   offsetFromSymbolStart = "148">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7962430B-869B-4BA0-BC6B-D66EB20A0B2A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BulAR/TableSearch/TableSearchWorkerImpl.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "fetchMedicineImage(imageURL:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7962430B-869B-4BA0-BC6B-D66EB20A0B2A - 5ad9bad07bfbf303"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BulAR.TableSearchWorkerImpl.fetchMedicineImage(imageURL: Swift.String, completion: (Swift.Optional&lt;__C.UIImage&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "BulAR"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lugaba/Documents/Git/BulAR/BulAR/TableSearch/TableSearchWorkerImpl.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "406">
+               </Location>
+               <Location
+                  uuid = "7962430B-869B-4BA0-BC6B-D66EB20A0B2A - f54b4a51ba43b608"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in BulAR.TableSearchWorkerImpl.fetchMedicineImage(imageURL: Swift.String, completion: (Swift.Optional&lt;__C.UIImage&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "BulAR"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lugaba/Documents/Git/BulAR/BulAR/TableSearch/TableSearchWorkerImpl.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "52">
                </Location>
             </Locations>
          </BreakpointContent>

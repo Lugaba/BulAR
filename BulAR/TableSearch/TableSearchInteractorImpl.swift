@@ -11,6 +11,7 @@ import UIKit
 class TableSearchInteractorImpl: TableSearchInteractor {
     private var presenter: TableSearchPresenter
     private var worker: TableSearchWorker
+    public let imageCash = NSCache<NSString, UIImage>()
     
     init(presenter: TableSearchPresenter, worker: TableSearchWorker) {
         self.presenter = presenter
@@ -28,6 +29,7 @@ class TableSearchInteractorImpl: TableSearchInteractor {
     func getMedicineImage(imageURL: String, completion: @escaping (UIImage) -> Void) {
         worker.fetchMedicineImage(imageURL: imageURL) { image, error in
             if let image = image {
+                self.imageCash.setObject(image, forKey: NSString(string: imageURL))
                 completion(image)
             }
         }
