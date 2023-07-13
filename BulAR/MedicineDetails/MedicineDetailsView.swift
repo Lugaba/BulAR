@@ -161,6 +161,22 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         return button
     }()
     
+    lazy var shareButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
+        button.addTarget(self, action: #selector(shareMedicine), for: .touchUpInside)
+        button.tintColor = .black
+        return button
+    }()
+    
+    lazy var favoriteButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "star"), for: .normal)
+        button.addTarget(self, action: #selector(closeModal), for: .touchUpInside)
+        button.tintColor = .black
+        return button
+    }()
+    
     init() {
         super.init(frame: .zero)
         backgroundColor = .white
@@ -175,6 +191,8 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
     
     func setupHierarchy() {
         addSubview(closeButton)
+        addSubview(shareButton)
+        addSubview(favoriteButton)
         
         addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -200,6 +218,18 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         closeButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
         closeButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
         closeButton.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        
+        shareButton.translatesAutoresizingMaskIntoConstraints = false
+        shareButton.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor).isActive = true
+        shareButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
+        shareButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        shareButton.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        
+        favoriteButton.translatesAutoresizingMaskIntoConstraints = false
+        favoriteButton.centerYAnchor.constraint(equalTo: shareButton.centerYAnchor).isActive = true
+        favoriteButton.trailingAnchor.constraint(equalTo: shareButton.leadingAnchor, constant: -8).isActive = true
+        favoriteButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        favoriteButton.widthAnchor.constraint(equalToConstant: 32).isActive = true
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.topAnchor.constraint(equalTo: closeButton.topAnchor, constant: 32).isActive = true
@@ -310,6 +340,11 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
     @objc
     private func closeModal() {
         viewController?.closeModal()
+    }
+    
+     @objc
+    private func shareMedicine() {
+        viewController?.shareMedicine()
     }
     
     @objc func openUrlSafari() {

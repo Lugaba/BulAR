@@ -50,6 +50,7 @@ class TableSearchWorkerImpl: TableSearchWorker {
         DispatchQueue.global(qos: .utility).async {
             reference.getData(maxSize: (1 * 1024 * 1024)) { data, error in
                 if let err = error {
+                    print(err)
                     completion(nil, err)
                 } else {
                     if let image = data {

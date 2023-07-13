@@ -15,6 +15,7 @@ protocol MedicineDetailsInteractor {
 protocol MedicineDetailsViewController: UITableViewController {
     func showMedicineDetails(bula: Bula)
     func closeModal()
+    func shareMedicine()
 }
 
 protocol MedicineDetailsRouter {
