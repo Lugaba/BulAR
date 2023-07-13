@@ -10,12 +10,15 @@ import UIKit
 
 protocol MedicineDetailsInteractor {
     func showMedicineDetails()
+    func favoriteMedicine()
 }
 
-protocol MedicineDetailsViewController: UITableViewController {
+protocol MedicineDetailsViewController: UIViewController {
     func showMedicineDetails(bula: Bula)
     func closeModal()
     func shareMedicine()
+    func favoriteMedicine()
+    func changeFavoriteButtonImage(starFilled: Bool)
 }
 
 protocol MedicineDetailsRouter {
@@ -24,6 +27,7 @@ protocol MedicineDetailsRouter {
 
 protocol MedicineDetailsView: UIView {
     func showMedicineDetails(bula: Bula)
+    func changeFavoriteButtonImage(starFilled: Bool)
 }
 
 protocol MedicineDetailsWorker {
@@ -31,6 +35,7 @@ protocol MedicineDetailsWorker {
 
 protocol MedicineDetailsPresenter {
     func showMedicineDetails(bula: Bula)
+    func changeFavoriteButtonImage(starFilled: Bool)
 }
 
 public struct MedicineDetailsFactory {

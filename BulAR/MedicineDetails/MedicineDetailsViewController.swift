@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class MedicineDetailsViewControllerImpl: UITableViewController, MedicineDetailsViewController {
+class MedicineDetailsViewControllerImpl: UIViewController, MedicineDetailsViewController {
     var interactor: MedicineDetailsInteractor?
     private var router: MedicineDetailsRouter
     var viewScreen: MedicineDetailsView
@@ -49,5 +49,13 @@ class MedicineDetailsViewControllerImpl: UITableViewController, MedicineDetailsV
             let activityViewController = UIActivityViewController(activityItems: [text], applicationActivities: nil)
             present(activityViewController, animated: true, completion: nil)
         }
+    }
+    
+    func favoriteMedicine() {
+        interactor?.favoriteMedicine()
+    }
+    
+    func changeFavoriteButtonImage(starFilled: Bool) {
+        viewScreen.changeFavoriteButtonImage(starFilled: starFilled)
     }
 }

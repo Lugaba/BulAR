@@ -19,4 +19,8 @@ class MedicineDetailsPresenterImpl: MedicineDetailsPresenter {
     func showMedicineDetails(bula: Bula) {
         viewController.showMedicineDetails(bula: bula)
     }
+    
+    func changeFavoriteButtonImage(starFilled: Bool) {
+        viewController.changeFavoriteButtonImage(starFilled: starFilled)
+    }
 }

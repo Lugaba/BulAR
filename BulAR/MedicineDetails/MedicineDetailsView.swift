@@ -172,7 +172,7 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
     lazy var favoriteButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "star"), for: .normal)
-        button.addTarget(self, action: #selector(closeModal), for: .touchUpInside)
+        button.addTarget(self, action: #selector(favoriteMedicine), for: .touchUpInside)
         button.tintColor = .black
         return button
     }()
@@ -317,6 +317,9 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
     }
     
     func showMedicineDetails(bula: Bula) {
+        if let favoritedMedicines = UserDefaults.standard.array(forKey: "favoriteList") as? [Int], favoritedMedicines.contains(bula.id) {
+            favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        }
         nameTitle.text = bula.nome
         
         var textCaption = ""
@@ -347,9 +350,22 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         viewController?.shareMedicine()
     }
     
+    @objc
+   private func favoriteMedicine() {
+       viewController?.favoriteMedicine()
+   }
+    
     @objc func openUrlSafari() {
         if let url = URL(string: bulaUrl) {
             UIApplication.shared.open(url)
+        }
+    }
+    
+    func changeFavoriteButtonImage(starFilled: Bool) {
+        if starFilled {
+            favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        } else {
+            favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
         }
     }
 }
