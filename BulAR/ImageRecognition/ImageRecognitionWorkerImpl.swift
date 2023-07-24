@@ -1,15 +1,15 @@
 //
-//  TableSearchWorkerImpl.swift
+//  ImageRecognitionWorker.swift
 //  BulAR
 //
-//  Created by Luca Hummel on 19/04/23.
+//  Created by Luca Hummel on 24/07/23.
 //
 
 import Foundation
-import FirebaseStorage
 import UIKit
+import FirebaseStorage
 
-class TableSearchWorkerImpl: TableSearchWorker {
+class ImageRecognitionWorkerImpl: ImageRecognitionWorker {
     func fetchMedicineList(completion: @escaping ([Bula]?, Error?) -> Void) {
         let urlString = "https://tcc-bula.herokuapp.com/bulas"
         
@@ -45,22 +45,31 @@ class TableSearchWorkerImpl: TableSearchWorker {
         task.resume()
     }
     
-    func fetchMedicineImage(imageURL: String, completion: @escaping (UIImage?, Error?) -> Void) {
-        let reference = Storage.storage().reference(withPath: imageURL)
-        DispatchQueue.global(qos: .utility).async {
-            reference.getData(maxSize: (1 * 1024 * 1024)) { data, error in
-                if let err = error {
-                    print(err)
-                    completion(nil, err)
-                } else {
-                    if let image = data {
-                        let myImage: UIImage! = UIImage(data: image)
-                        completion(myImage, nil)
+    func fetchMedicineImage(imagesURL: [String], completion: @escaping ([(UIImage, String)]?, Error?) -> Void) {
+        let group = DispatchGroup()
+        var downloadedImages: [(UIImage, String)] = []
+        
+        for url in imagesURL {
+            group.enter()
+            let reference = Storage.storage().reference(withPath: url)
+            DispatchQueue.global(qos: .utility).async {
+                reference.getData(maxSize: (1 * 1024 * 1024)) { data, error in
+                    if let err = error {
+                        print(err)
+                        completion(nil, err)
+                    } else {
+                        if let image = data {
+                            let myImage: UIImage! = UIImage(data: image)
+                            downloadedImages.append((myImage, url))
+                            group.leave()
+                        }
                     }
                 }
             }
         }
+        
+        group.notify(queue: .main) {
+            completion(downloadedImages, nil)
+        }
     }
-    
-    
 }

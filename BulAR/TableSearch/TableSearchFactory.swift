@@ -36,13 +36,10 @@ protocol TableSearchPresenter {
 }
 
 public struct TableSearchFactory {
-    public static func makeController() -> UIViewController {
+    public static func makeController(navigationController: UINavigationController?) -> UIViewController {
         let worker = TableSearchWorkerImpl()
         
         let viewController = TableSearchViewControllerImpl()
-
-        let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.navigationBar.prefersLargeTitles = true
         
         let router = TableSearchRouterImpl(navigationController: navigationController)
 
@@ -54,6 +51,6 @@ public struct TableSearchFactory {
         viewController.router = router
         
         
-        return navigationController
+        return viewController
     }
 }

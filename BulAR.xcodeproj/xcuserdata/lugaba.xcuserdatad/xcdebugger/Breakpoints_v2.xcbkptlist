@@ -164,5 +164,69 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B6A2A417-5F87-4B32-8B52-66E734E46C79"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BulAR/ImageRecognition/ImageRecognitionRouter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "init(navigationController:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D80D8BE3-B924-4127-AE6C-D20AEF292B71"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BulAR/ImageRecognition/ImageRecognitionPresenterImpl.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "setRecognitionImages(list:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "D80D8BE3-B924-4127-AE6C-D20AEF292B71 - c9d0e60a8f347417"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BulAR.ImageRecognitionPresenterImpl.setRecognitionImages(list: Swift.Array&lt;__C.UIImage&gt;) -&gt; ()"
+                  moduleName = "BulAR"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lugaba/Documents/Git/BulAR/BulAR/ImageRecognition/ImageRecognitionPresenterImpl.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "D80D8BE3-B924-4127-AE6C-D20AEF292B71 - ff56a0d5ba431c29"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BulAR.ImageRecognitionPresenterImpl.setRecognitionImages(list: Swift.Array&lt;(__C.UIImage, Swift.String)&gt;) -&gt; ()"
+                  moduleName = "BulAR"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lugaba/Documents/Git/BulAR/BulAR/ImageRecognition/ImageRecognitionPresenterImpl.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

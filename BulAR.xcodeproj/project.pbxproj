@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		81325C7729D101640063F0E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81325C7629D101640063F0E1 /* AppDelegate.swift */; };
-		81325C7929D101640063F0E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81325C7829D101640063F0E1 /* ViewController.swift */; };
+		81325C7929D101640063F0E1 /* ImageRecognitionViewControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81325C7829D101640063F0E1 /* ImageRecognitionViewControllerImpl.swift */; };
 		81325C7B29D101640063F0E1 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 81325C7A29D101640063F0E1 /* Experience.rcproject */; };
 		81325C8029D101660063F0E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81325C7F29D101660063F0E1 /* Assets.xcassets */; };
 		81325C8329D101660063F0E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81325C8129D101660063F0E1 /* LaunchScreen.storyboard */; };
@@ -25,6 +25,10 @@
 		813EEAAB29F6ECCE00A0CE97 /* MedicineDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813EEAAA29F6ECCE00A0CE97 /* MedicineDetailsView.swift */; };
 		813EEAAD29F6ED9600A0CE97 /* MedicineDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813EEAAC29F6ED9600A0CE97 /* MedicineDetailsPresenter.swift */; };
 		814E54E129D110900040A2F1 /* ImageRecognitionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814E54E029D110900040A2F1 /* ImageRecognitionFactory.swift */; };
+		816C92AB2A6EBB46007DEEE5 /* ImageRecognitionRouterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816C92AA2A6EBB46007DEEE5 /* ImageRecognitionRouterImpl.swift */; };
+		816C92AD2A6EC0E4007DEEE5 /* ImageRecognitionInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816C92AC2A6EC0E4007DEEE5 /* ImageRecognitionInteractorImpl.swift */; };
+		816C92AF2A6EC120007DEEE5 /* ImageRecognitionWorkerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816C92AE2A6EC120007DEEE5 /* ImageRecognitionWorkerImpl.swift */; };
+		816C92B12A6ECB11007DEEE5 /* ImageRecognitionPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816C92B02A6ECB11007DEEE5 /* ImageRecognitionPresenterImpl.swift */; };
 		8171605D2A08497100A08EFE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8171605C2A08497100A08EFE /* GoogleService-Info.plist */; };
 		817160602A084AA200A08EFE /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8171605F2A084AA200A08EFE /* FirebaseStorage */; };
 		81B87D6229F012E40042A39C /* TableSearchViewControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B87D6129F012E40042A39C /* TableSearchViewControllerImpl.swift */; };
@@ -55,7 +59,7 @@
 /* Begin PBXFileReference section */
 		81325C7329D101640063F0E1 /* BulAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BulAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81325C7629D101640063F0E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		81325C7829D101640063F0E1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		81325C7829D101640063F0E1 /* ImageRecognitionViewControllerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecognitionViewControllerImpl.swift; sourceTree = "<group>"; };
 		81325C7A29D101640063F0E1 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
 		81325C7F29D101660063F0E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81325C8229D101660063F0E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -74,6 +78,10 @@
 		813EEAAA29F6ECCE00A0CE97 /* MedicineDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineDetailsView.swift; sourceTree = "<group>"; };
 		813EEAAC29F6ED9600A0CE97 /* MedicineDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineDetailsPresenter.swift; sourceTree = "<group>"; };
 		814E54E029D110900040A2F1 /* ImageRecognitionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecognitionFactory.swift; sourceTree = "<group>"; };
+		816C92AA2A6EBB46007DEEE5 /* ImageRecognitionRouterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecognitionRouterImpl.swift; sourceTree = "<group>"; };
+		816C92AC2A6EC0E4007DEEE5 /* ImageRecognitionInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecognitionInteractorImpl.swift; sourceTree = "<group>"; };
+		816C92AE2A6EC120007DEEE5 /* ImageRecognitionWorkerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecognitionWorkerImpl.swift; sourceTree = "<group>"; };
+		816C92B02A6ECB11007DEEE5 /* ImageRecognitionPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecognitionPresenterImpl.swift; sourceTree = "<group>"; };
 		8171605C2A08497100A08EFE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		81B87D6129F012E40042A39C /* TableSearchViewControllerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSearchViewControllerImpl.swift; sourceTree = "<group>"; };
 		81B87D6329F012F10042A39C /* TableSearchPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSearchPresenterImpl.swift; sourceTree = "<group>"; };
@@ -188,8 +196,12 @@
 		814E54DF29D1103A0040A2F1 /* ImageRecognition */ = {
 			isa = PBXGroup;
 			children = (
-				81325C7829D101640063F0E1 /* ViewController.swift */,
+				81325C7829D101640063F0E1 /* ImageRecognitionViewControllerImpl.swift */,
 				814E54E029D110900040A2F1 /* ImageRecognitionFactory.swift */,
+				816C92AA2A6EBB46007DEEE5 /* ImageRecognitionRouterImpl.swift */,
+				816C92AC2A6EC0E4007DEEE5 /* ImageRecognitionInteractorImpl.swift */,
+				816C92AE2A6EC120007DEEE5 /* ImageRecognitionWorkerImpl.swift */,
+				816C92B02A6ECB11007DEEE5 /* ImageRecognitionPresenterImpl.swift */,
 			);
 			path = ImageRecognition;
 			sourceTree = "<group>";
@@ -344,13 +356,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				816C92AB2A6EBB46007DEEE5 /* ImageRecognitionRouterImpl.swift in Sources */,
 				81B87D6229F012E40042A39C /* TableSearchViewControllerImpl.swift in Sources */,
 				814E54E129D110900040A2F1 /* ImageRecognitionFactory.swift in Sources */,
 				81B87D6629F012FD0042A39C /* TableSearchWorkerImpl.swift in Sources */,
+				816C92AD2A6EC0E4007DEEE5 /* ImageRecognitionInteractorImpl.swift in Sources */,
 				813EEAA929F6ECC700A0CE97 /* MedicineDetailsInteractor.swift in Sources */,
 				813EEAA029F05ECB00A0CE97 /* Fabricante.swift in Sources */,
 				813EEAAB29F6ECCE00A0CE97 /* MedicineDetailsView.swift in Sources */,
-				81325C7929D101640063F0E1 /* ViewController.swift in Sources */,
+				81325C7929D101640063F0E1 /* ImageRecognitionViewControllerImpl.swift in Sources */,
 				813EEAA329F6ECAD00A0CE97 /* MedicineDetailsViewController.swift in Sources */,
 				813EEAAD29F6ED9600A0CE97 /* MedicineDetailsPresenter.swift in Sources */,
 				81325C7729D101640063F0E1 /* AppDelegate.swift in Sources */,
@@ -359,10 +373,12 @@
 				81325C7B29D101640063F0E1 /* Experience.rcproject in Sources */,
 				813EEA9E29F05EC300A0CE97 /* Categoria.swift in Sources */,
 				813EEAA729F6ECBE00A0CE97 /* MedicineDetailsRouter.swift in Sources */,
+				816C92AF2A6EC120007DEEE5 /* ImageRecognitionWorkerImpl.swift in Sources */,
 				81B87D6A29F013120042A39C /* TableSearchInteractorImpl.swift in Sources */,
 				813EEAA529F6ECB400A0CE97 /* MedicineDetailsFactory.swift in Sources */,
 				81B87D6429F012F10042A39C /* TableSearchPresenterImpl.swift in Sources */,
 				81B87D6C29F0131D0042A39C /* TableSearchFactory.swift in Sources */,
+				816C92B12A6ECB11007DEEE5 /* ImageRecognitionPresenterImpl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

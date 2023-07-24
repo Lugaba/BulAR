@@ -20,7 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow()
         window?.overrideUserInterfaceStyle = .light
-        window?.rootViewController = TableSearchFactory.makeController()
+        let navigationController = UINavigationController()
+        let viewController = ImageRecognitionFactory.makeController(navigationController: navigationController)
+        navigationController.viewControllers = [viewController]
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
                 
         return true
