@@ -20,6 +20,18 @@ class ImageRecognitionViewControllerImpl: UIViewController {
         button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         button.backgroundColor = .lightGray
         button.layer.cornerRadius = 10
+        button.isAccessibilityElement = true
+        button.accessibilityLabel = "Botão para abrir tela de pesquisa de bulas"
+        return button
+    }()
+    
+    lazy var favoriteButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        button.backgroundColor = .lightGray
+        button.layer.cornerRadius = 10
+        button.isAccessibilityElement = true
+        button.accessibilityLabel = "Botão para abrir tela de bulas favoritadas"
         return button
     }()
     
@@ -43,6 +55,7 @@ class ImageRecognitionViewControllerImpl: UIViewController {
         
         view.addSubview(arView)
         view.addSubview(searchButton)
+        view.addSubview(favoriteButton)
         
         searchButton.translatesAutoresizingMaskIntoConstraints = false
         searchButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
@@ -53,11 +66,21 @@ class ImageRecognitionViewControllerImpl: UIViewController {
         
         searchButton.addTarget(self, action: #selector(navigateToSearch), for: .touchUpInside)
         
+        favoriteButton.translatesAutoresizingMaskIntoConstraints = false
+        favoriteButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        favoriteButton.widthAnchor.constraint(equalToConstant: 48).isActive = true
+        favoriteButton.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: 16).isActive = true
+        favoriteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8).isActive = true
+        favoriteButton.isEnabled = false
+        
+        favoriteButton.addTarget(self, action: #selector(navigateToFavorite), for: .touchUpInside)
+        
         interactor?.getMedicineList(completion: { listaBula, error in
             if let listaBula = listaBula {
                 self.listaBulas = listaBula
                 DispatchQueue.main.sync {
                     self.searchButton.isEnabled = true
+                    self.favoriteButton.isEnabled = true
                 }
             }
         })
@@ -65,7 +88,14 @@ class ImageRecognitionViewControllerImpl: UIViewController {
     
     @objc func navigateToSearch() {
         if let listaBulas = listaBulas {
-            router?.navigateToSearch(bulas: listaBulas)
+            router?.navigateToSearch(bulas: listaBulas, screenName: "Pesquisar bula")
+        }
+    }
+    
+    @objc func navigateToFavorite() {
+        if let listaBulas = listaBulas, let favoritedMedicines = UserDefaults.standard.array(forKey: "favoriteList") as? [Int] {
+            let bulasFiltradas = listaBulas.filter { favoritedMedicines.contains($0.id) }
+            router?.navigateToSearch(bulas: bulasFiltradas, screenName: "Favoritos")
         }
     }
     

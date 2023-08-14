@@ -35,10 +35,10 @@ protocol TableSearchPresenter {
 }
 
 public struct TableSearchFactory {
-    public static func makeController(navigationController: UINavigationController?, bulas: [Bula]) -> UIViewController {
+    public static func makeController(navigationController: UINavigationController?, bulas: [Bula], screenName: String) -> UIViewController {
         let worker = TableSearchWorkerImpl()
         
-        let viewController = TableSearchViewControllerImpl()
+        let viewController = TableSearchViewControllerImpl(screenName: screenName)
         
         let router = TableSearchRouterImpl(navigationController: navigationController)
 

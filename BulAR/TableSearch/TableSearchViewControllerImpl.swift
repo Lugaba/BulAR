@@ -14,10 +14,12 @@ class TableSearchViewControllerImpl: UITableViewController, TableSearchViewContr
     var data = [Bula]()
     var filteredData = [Bula]()
     let searchController = UISearchController(searchResultsController: nil)
+    let screenName: String
     
-    init(router: TableSearchRouter? = nil, interactor: TableSearchInteractor? = nil) {
+    init(router: TableSearchRouter? = nil, interactor: TableSearchInteractor? = nil, screenName: String) {
         self.interactor = interactor
         self.router = router
+        self.screenName = screenName
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -32,7 +34,7 @@ class TableSearchViewControllerImpl: UITableViewController, TableSearchViewContr
         
         interactor?.getMedicineList()
         
-        title = "Pesquisar bula"
+        title = screenName
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false

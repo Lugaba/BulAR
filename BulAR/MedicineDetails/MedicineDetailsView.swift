@@ -17,6 +17,8 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
         button.addTarget(self, action: #selector(closeModal), for: .touchUpInside)
         button.tintColor = .lightGray
+        button.isAccessibilityElement = true
+        button.accessibilityLabel = "Botão para fechar bula"
         return button
     }()
     
@@ -36,6 +38,7 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        label.isAccessibilityElement = true
         return label
     }()
     
@@ -45,16 +48,18 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .caption1)
+        label.isAccessibilityElement = true
         return label
     }()
     
     lazy var indicacaoTitle: UILabel = {
         let label = UILabel()
-        label.text = "Indicação"
+        label.text = "Para que este medicamento é indicado?"
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .title1)
+        label.isAccessibilityElement = true
         return label
     }()
     
@@ -64,17 +69,19 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.isAccessibilityElement = true
         return label
     }()
     
     lazy var posologiaTitle: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 23)
-        label.text = "Posologia"
+        label.font = UIFont.boldSystemFont(ofSize: 19)
+        label.text = "Como devo usar este medicamento?"
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .title1)
+        label.isAccessibilityElement = true
         return label
     }()
     
@@ -84,17 +91,19 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.isAccessibilityElement = true
         return label
     }()
     
     lazy var contraindicacaoTitle: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 23)
-        label.text = "Contraindicação"
+        label.font = UIFont.boldSystemFont(ofSize: 19)
+        label.text = "Quando não devo usar este medicamento?"
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .title1)
+        label.isAccessibilityElement = true
         return label
     }()
     
@@ -104,17 +113,19 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.isAccessibilityElement = true
         return label
     }()
     
     lazy var colateralTitle: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 23)
-        label.text = "Efeitos colaterais"
+        label.font = UIFont.boldSystemFont(ofSize: 19)
+        label.text = "Quais os males que este medicamento pode causar?"
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .title1)
+        label.isAccessibilityElement = true
         return label
     }()
     
@@ -124,17 +135,19 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.isAccessibilityElement = true
         return label
     }()
     
     lazy var fabricanteTitle: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 23)
+        label.font = UIFont.boldSystemFont(ofSize: 19)
         label.text = "Fabricante"
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .title1)
+        label.isAccessibilityElement = true
         return label
     }()
     
@@ -144,6 +157,7 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.isAccessibilityElement = true
         return label
     }()
     
@@ -158,6 +172,8 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         button.titleLabel?.lineBreakMode = .byWordWrapping
         button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
         button.titleLabel?.adjustsFontForContentSizeCategory = true
+        button.isAccessibilityElement = true
+        button.accessibilityLabel = "Botão para abrir bula completa na internet"
         return button
     }()
     
@@ -166,6 +182,8 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         button.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
         button.addTarget(self, action: #selector(shareMedicine), for: .touchUpInside)
         button.tintColor = .black
+        button.isAccessibilityElement = true
+        button.accessibilityLabel = "Botão para compartilhar bula"
         return button
     }()
     
@@ -174,6 +192,8 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         button.setImage(UIImage(systemName: "star"), for: .normal)
         button.addTarget(self, action: #selector(favoriteMedicine), for: .touchUpInside)
         button.tintColor = .black
+        button.isAccessibilityElement = true
+        button.accessibilityLabel = "Botão para favoritar bula"
         return button
     }()
     
