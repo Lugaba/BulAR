@@ -8,28 +8,26 @@
 import Foundation
 import UIKit
 
-class TableSearchInteractorImpl: TableSearchInteractor {
+class TableSearchInteractorImpl: TableSearchInteractor {    
     private var presenter: TableSearchPresenter
     private var worker: TableSearchWorker
-    public let imageCash = NSCache<NSString, UIImage>()
+    public let imageCash = GlobalCache.shared
+    private var bulas: [Bula]
     
-    init(presenter: TableSearchPresenter, worker: TableSearchWorker) {
+    init(presenter: TableSearchPresenter, worker: TableSearchWorker, bulas: [Bula]) {
         self.presenter = presenter
         self.worker = worker
+        self.bulas = bulas
     }
     
     func getMedicineList() {
-        worker.fetchMedicineList { [weak self] bulas, error in
-            if let bulas = bulas {
-                self?.presenter.showMedicineList(list: bulas)
-            }
-        }
+        self.presenter.showMedicineList(list: self.bulas)
     }
     
     func getMedicineImage(imageURL: String, completion: @escaping (UIImage) -> Void) {
         worker.fetchMedicineImage(imageURL: imageURL) { image, error in
             if let image = image {
-                self.imageCash.setObject(image, forKey: NSString(string: imageURL))
+                self.imageCash.setObject(image, forKey: imageURL)
                 completion(image)
             }
         }

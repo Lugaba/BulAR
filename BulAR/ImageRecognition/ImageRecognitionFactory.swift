@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol ImageRecognitionRouter {
-    func navigateToSearch()
+    func navigateToSearch(bulas: [Bula])
     func navigateToBula(bula: Bula)
 }
 
@@ -19,9 +19,8 @@ protocol ImageRecognitionWorker {
 }
 
 protocol ImageRecognitionInteractor {
-    func getMedicineList()
+    func getMedicineList(completion: @escaping ([Bula]?, Error?) -> Void)
     func getMedicineImage()
-    var imageCash: NSCache<NSString, UIImage> { get }
     func getBula(url: String) -> Bula?
 }
 

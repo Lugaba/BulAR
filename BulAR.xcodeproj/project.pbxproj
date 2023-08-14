@@ -37,6 +37,7 @@
 		81B87D6A29F013120042A39C /* TableSearchInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B87D6929F013120042A39C /* TableSearchInteractorImpl.swift */; };
 		81B87D6C29F0131D0042A39C /* TableSearchFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B87D6B29F0131D0042A39C /* TableSearchFactory.swift */; };
 		81B87D6E29F013590042A39C /* TableSearchRouterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B87D6D29F013590042A39C /* TableSearchRouterImpl.swift */; };
+		81E25BFF2A8AE36600275ECE /* GlobalCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E25BFE2A8AE36600275ECE /* GlobalCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		81B87D6929F013120042A39C /* TableSearchInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSearchInteractorImpl.swift; sourceTree = "<group>"; };
 		81B87D6B29F0131D0042A39C /* TableSearchFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSearchFactory.swift; sourceTree = "<group>"; };
 		81B87D6D29F013590042A39C /* TableSearchRouterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSearchRouterImpl.swift; sourceTree = "<group>"; };
+		81E25BFE2A8AE36600275ECE /* GlobalCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				81325C7A29D101640063F0E1 /* Experience.rcproject */,
 				81325C7F29D101660063F0E1 /* Assets.xcassets */,
 				81325C8129D101660063F0E1 /* LaunchScreen.storyboard */,
+				81E25BFE2A8AE36600275ECE /* GlobalCache.swift */,
 			);
 			path = BulAR;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				81B87D6A29F013120042A39C /* TableSearchInteractorImpl.swift in Sources */,
 				813EEAA529F6ECB400A0CE97 /* MedicineDetailsFactory.swift in Sources */,
 				81B87D6429F012F10042A39C /* TableSearchPresenterImpl.swift in Sources */,
+				81E25BFF2A8AE36600275ECE /* GlobalCache.swift in Sources */,
 				81B87D6C29F0131D0042A39C /* TableSearchFactory.swift in Sources */,
 				816C92B12A6ECB11007DEEE5 /* ImageRecognitionPresenterImpl.swift in Sources */,
 			);

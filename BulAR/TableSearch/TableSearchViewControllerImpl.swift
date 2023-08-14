@@ -29,7 +29,7 @@ class TableSearchViewControllerImpl: UITableViewController, TableSearchViewContr
         super.viewDidLoad()
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellIdentifier")
-
+        
         interactor?.getMedicineList()
         
         title = "Pesquisar bula"
@@ -50,9 +50,9 @@ class TableSearchViewControllerImpl: UITableViewController, TableSearchViewContr
         
         let item = filteredData[indexPath.row]
         var content = cell.defaultContentConfiguration()
-                
+        
         if var firstImageURL = item.imagesURL.first {
-            if let cachedImage = interactor?.imageCash.object(forKey: NSString(string: firstImageURL)) {
+            if let cachedImage = GlobalCache.shared.getObject(forKey: firstImageURL) {
                 content.image = cachedImage
             } else {
                 interactor?.getMedicineImage(imageURL: firstImageURL, completion: { image in
@@ -61,7 +61,7 @@ class TableSearchViewControllerImpl: UITableViewController, TableSearchViewContr
                 })
             }
             cell.contentConfiguration = content
-
+            
         }
         
         content.imageProperties.maximumSize = CGSize(width: 60, height: 60)
@@ -89,9 +89,7 @@ class TableSearchViewControllerImpl: UITableViewController, TableSearchViewContr
     func showMedicineList(list: [Bula]) {
         data = list
         filteredData = data
-        DispatchQueue.main.sync {
-            tableView.reloadData()
-        }
+        tableView.reloadData()
     }
     
 }

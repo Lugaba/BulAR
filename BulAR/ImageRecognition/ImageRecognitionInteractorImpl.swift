@@ -11,7 +11,7 @@ import UIKit
 class ImageRecognitionInteractorImpl: ImageRecognitionInteractor {
 
     
-    public let imageCash = NSCache<NSString, UIImage>()
+    let imageCash = GlobalCache.shared
     private var worker: ImageRecognitionWorker
     private var presenter: ImageRecognitionPresenter
 
@@ -22,13 +22,15 @@ class ImageRecognitionInteractorImpl: ImageRecognitionInteractor {
         self.presenter = presenter
     }
     
-    func getMedicineList() {
+    func getMedicineList(completion: @escaping ([Bula]?, Error?) -> Void) {
         worker.fetchMedicineList { bulas, error in
             if let bulas = bulas {
                 self.bulas = bulas
                 self.getMedicineImage()
+                completion(bulas, nil)
             } else {
                 print(error)
+                completion(nil, error)
             }
         }
     }
@@ -47,7 +49,7 @@ class ImageRecognitionInteractorImpl: ImageRecognitionInteractor {
                 var images: [UIImage] = []
                 for item in response {
                     images.append(item.0)
-                    self.imageCash.setObject(item.0, forKey: NSString(string: item.1))
+                    self.imageCash.setObject(item.0, forKey: item.1)
                 }
                 self.presenter.setRecognitionImages(list: response)
             }

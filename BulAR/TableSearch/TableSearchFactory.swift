@@ -11,7 +11,6 @@ import UIKit
 protocol TableSearchInteractor {
     func getMedicineList()
     func getMedicineImage(imageURL: String, completion: @escaping (UIImage) -> Void)
-    var imageCash: NSCache<NSString, UIImage> { get }
 }
 
 protocol TableSearchViewController: UITableViewController {
@@ -36,7 +35,7 @@ protocol TableSearchPresenter {
 }
 
 public struct TableSearchFactory {
-    public static func makeController(navigationController: UINavigationController?) -> UIViewController {
+    public static func makeController(navigationController: UINavigationController?, bulas: [Bula]) -> UIViewController {
         let worker = TableSearchWorkerImpl()
         
         let viewController = TableSearchViewControllerImpl()
@@ -45,7 +44,7 @@ public struct TableSearchFactory {
 
         
         let presenter = TableSearchPresenterImpl(viewController: viewController)
-        let interactor = TableSearchInteractorImpl(presenter: presenter, worker: worker)
+        let interactor = TableSearchInteractorImpl(presenter: presenter, worker: worker, bulas: bulas)
         
         viewController.interactor = interactor
         viewController.router = router

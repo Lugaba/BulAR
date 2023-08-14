@@ -16,8 +16,8 @@ class ImageRecognitionRouterImpl: ImageRecognitionRouter {
         self.navigationController = navigationController
     }
     
-    func navigateToSearch() {
-        let viewController = TableSearchFactory.makeController(navigationController: navigationController)
+    func navigateToSearch(bulas: [Bula]) {
+        let viewController = TableSearchFactory.makeController(navigationController: navigationController, bulas: bulas)
         navigationController?.pushViewController(viewController, animated: true)
     }
     

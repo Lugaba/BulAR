@@ -13,6 +13,7 @@ class ImageRecognitionViewControllerImpl: UIViewController {
     var router: ImageRecognitionRouter?
     var arView: ARView?
     var interactor: ImageRecognitionInteractor?
+    private var listaBulas: [Bula]?
     
     lazy var searchButton: UIButton = {
         let button = UIButton()
@@ -48,14 +49,24 @@ class ImageRecognitionViewControllerImpl: UIViewController {
         searchButton.widthAnchor.constraint(equalToConstant: 48).isActive = true
         searchButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         searchButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8).isActive = true
+        searchButton.isEnabled = false
         
         searchButton.addTarget(self, action: #selector(navigateToSearch), for: .touchUpInside)
         
-        interactor?.getMedicineList()
+        interactor?.getMedicineList(completion: { listaBula, error in
+            if let listaBula = listaBula {
+                self.listaBulas = listaBula
+                DispatchQueue.main.sync {
+                    self.searchButton.isEnabled = true
+                }
+            }
+        })
     }
     
     @objc func navigateToSearch() {
-        router?.navigateToSearch()
+        if let listaBulas = listaBulas {
+            router?.navigateToSearch(bulas: listaBulas)
+        }
     }
     
 }
