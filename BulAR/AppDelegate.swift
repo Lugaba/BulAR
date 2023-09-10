@@ -21,7 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.overrideUserInterfaceStyle = .light
         let navigationController = UINavigationController()
-        let viewController = ImageRecognitionFactory.makeController(navigationController: navigationController)
+        var viewController: UIViewController
+        if !UserDefaults.standard.bool(forKey: "firstOpen") || true {
+            UserDefaults.standard.set(true, forKey: "firstOpen")
+            viewController = OnboardingFactory.makeController(navigationController: navigationController)
+        } else {
+            viewController = ImageRecognitionFactory.makeController(navigationController: navigationController)
+        }
         navigationController.viewControllers = [viewController]
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
