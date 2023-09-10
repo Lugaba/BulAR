@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.overrideUserInterfaceStyle = .light
         let navigationController = UINavigationController()
         var viewController: UIViewController
-        if !UserDefaults.standard.bool(forKey: "firstOpen") || true {
+        if !UserDefaults.standard.bool(forKey: "firstOpen") {
             UserDefaults.standard.set(true, forKey: "firstOpen")
             viewController = OnboardingFactory.makeController(navigationController: navigationController)
         } else {

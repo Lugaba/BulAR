@@ -31,4 +31,8 @@ class OnboardingViewControllerImpl: UIViewController, OnboardingViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    func goToMainView() {
+        router.goToMainView()
+    }
 }

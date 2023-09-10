@@ -13,11 +13,11 @@ protocol OnboardingInteractor {
 }
 
 protocol OnboardingViewController: UIViewController {
-
+    func goToMainView()
 }
 
 protocol OnboardingRouter {
-    
+    func goToMainView()
 }
 
 protocol OnboardingView: UIView {

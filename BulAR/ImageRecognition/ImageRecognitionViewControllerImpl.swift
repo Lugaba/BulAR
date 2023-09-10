@@ -47,6 +47,7 @@ class ImageRecognitionViewControllerImpl: UIViewController {
     
     
     override func viewDidLoad() {
+        self.navigationItem.hidesBackButton = true
         arView = ARView(frame: view.bounds)
         
         guard let arView = self.arView else {

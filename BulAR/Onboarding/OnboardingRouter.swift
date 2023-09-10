@@ -14,4 +14,10 @@ class OnboardingRouterImpl: OnboardingRouter {
     init(navigationController: UINavigationController?) {
         self.navigationController = navigationController
     }
+    
+    func goToMainView() {
+        let viewController = ImageRecognitionFactory.makeController(navigationController: navigationController)
+        
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }
