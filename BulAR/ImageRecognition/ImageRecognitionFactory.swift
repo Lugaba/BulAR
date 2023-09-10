@@ -11,6 +11,7 @@ import UIKit
 protocol ImageRecognitionRouter {
     func navigateToSearch(bulas: [Bula], screenName: String)
     func navigateToBula(bula: Bula)
+    func navigateToOnboarding()
 }
 
 protocol ImageRecognitionWorker {

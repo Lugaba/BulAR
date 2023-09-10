@@ -46,7 +46,7 @@ class OnboardingViewImpl: UIView, OnboardingView {
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .body)
-        label.text = "Aponte a camêra do celular para a embalagem do medicamento."
+        label.text = "Aponte a câmera do celular para a embalagem do medicamento."
         label.isAccessibilityElement = true
         return label
     }()
@@ -137,9 +137,13 @@ class OnboardingViewImpl: UIView, OnboardingView {
         return label
     }()
     
-    init() {
+    init(showContinueButton: Bool) {
         super.init(frame: .zero)
         backgroundColor = .white
+        
+        if !showContinueButton {
+            self.continueButton.isHidden = true
+        }
         
         setupHierarchy()
         setupConstraints()

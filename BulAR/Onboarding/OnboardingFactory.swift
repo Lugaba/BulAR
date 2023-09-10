@@ -29,9 +29,9 @@ protocol OnboardingPresenter {
 }
 
 public struct OnboardingFactory {
-    public static func makeController(navigationController: UINavigationController?) -> UIViewController {
+    public static func makeController(navigationController: UINavigationController?, showContinueButton: Bool) -> UIViewController {
         
-        let view = OnboardingViewImpl()
+        let view = OnboardingViewImpl(showContinueButton: showContinueButton)
         let router = OnboardingRouterImpl(navigationController: navigationController)
         
         let viewController = OnboardingViewControllerImpl(viewScreen: view, router: router)

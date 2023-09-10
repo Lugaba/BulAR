@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var viewController: UIViewController
         if !UserDefaults.standard.bool(forKey: "firstOpen") {
             UserDefaults.standard.set(true, forKey: "firstOpen")
-            viewController = OnboardingFactory.makeController(navigationController: navigationController)
+            viewController = OnboardingFactory.makeController(navigationController: navigationController, showContinueButton: true)
         } else {
             viewController = ImageRecognitionFactory.makeController(navigationController: navigationController)
         }

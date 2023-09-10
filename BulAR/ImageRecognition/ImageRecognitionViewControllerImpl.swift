@@ -35,6 +35,16 @@ class ImageRecognitionViewControllerImpl: UIViewController {
         return button
     }()
     
+    lazy var helpButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "questionmark"), for: .normal)
+        button.backgroundColor = .lightGray
+        button.layer.cornerRadius = 10
+        button.isAccessibilityElement = true
+        button.accessibilityLabel = "Botão para abrir ajuda"
+        return button
+    }()
+    
     init(router: ImageRecognitionRouter? = nil, interactor: ImageRecognitionInteractor? = nil) {
         self.router = router
         self.interactor = interactor
@@ -57,6 +67,7 @@ class ImageRecognitionViewControllerImpl: UIViewController {
         view.addSubview(arView)
         view.addSubview(searchButton)
         view.addSubview(favoriteButton)
+        view.addSubview(helpButton)
         
         searchButton.translatesAutoresizingMaskIntoConstraints = false
         searchButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
@@ -75,6 +86,14 @@ class ImageRecognitionViewControllerImpl: UIViewController {
         favoriteButton.isEnabled = false
         
         favoriteButton.addTarget(self, action: #selector(navigateToFavorite), for: .touchUpInside)
+        
+        helpButton.translatesAutoresizingMaskIntoConstraints = false
+        helpButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        helpButton.widthAnchor.constraint(equalToConstant: 48).isActive = true
+        helpButton.topAnchor.constraint(equalTo: favoriteButton.bottomAnchor, constant: 16).isActive = true
+        helpButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8).isActive = true
+        
+        helpButton.addTarget(self, action: #selector(navigateToOnboarding), for: .touchUpInside)
         
         interactor?.getMedicineList(completion: { listaBula, error in
             if let listaBula = listaBula {
@@ -98,6 +117,10 @@ class ImageRecognitionViewControllerImpl: UIViewController {
             let bulasFiltradas = listaBulas.filter { favoritedMedicines.contains($0.id) }
             router?.navigateToSearch(bulas: bulasFiltradas, screenName: "Favoritos")
         }
+    }
+    
+    @objc func navigateToOnboarding() {
+        router?.navigateToOnboarding()
     }
     
 }

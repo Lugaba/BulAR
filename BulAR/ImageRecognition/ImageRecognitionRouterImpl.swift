@@ -26,4 +26,10 @@ class ImageRecognitionRouterImpl: ImageRecognitionRouter {
         
         navigationController?.present(viewController, animated: true)
     }
+    
+    func navigateToOnboarding() {
+        let viewController = OnboardingFactory.makeController(navigationController: navigationController, showContinueButton: false)
+        
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }
