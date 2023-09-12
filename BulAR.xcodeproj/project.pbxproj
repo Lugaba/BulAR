@@ -37,6 +37,7 @@
 		817285BC2AAE701B0006DFD3 /* OnboardingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817285BB2AAE701B0006DFD3 /* OnboardingRouter.swift */; };
 		817285BE2AAE70550006DFD3 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817285BD2AAE70550006DFD3 /* OnboardingPresenter.swift */; };
 		817285C02AAE707E0006DFD3 /* OnboardingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817285BF2AAE707E0006DFD3 /* OnboardingInteractor.swift */; };
+		81AC739B2AAFDBE600D8D22B /* OpenDyslexic-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81AC739A2AAFDBE500D8D22B /* OpenDyslexic-Regular.otf */; };
 		81B87D6229F012E40042A39C /* TableSearchViewControllerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B87D6129F012E40042A39C /* TableSearchViewControllerImpl.swift */; };
 		81B87D6429F012F10042A39C /* TableSearchPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B87D6329F012F10042A39C /* TableSearchPresenterImpl.swift */; };
 		81B87D6629F012FD0042A39C /* TableSearchWorkerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B87D6529F012FD0042A39C /* TableSearchWorkerImpl.swift */; };
@@ -96,6 +97,8 @@
 		817285BB2AAE701B0006DFD3 /* OnboardingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRouter.swift; sourceTree = "<group>"; };
 		817285BD2AAE70550006DFD3 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
 		817285BF2AAE707E0006DFD3 /* OnboardingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingInteractor.swift; sourceTree = "<group>"; };
+		81AC739A2AAFDBE500D8D22B /* OpenDyslexic-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenDyslexic-Regular.otf"; sourceTree = "<group>"; };
+		81AC739C2AAFDBFB00D8D22B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		81B87D6129F012E40042A39C /* TableSearchViewControllerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSearchViewControllerImpl.swift; sourceTree = "<group>"; };
 		81B87D6329F012F10042A39C /* TableSearchPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSearchPresenterImpl.swift; sourceTree = "<group>"; };
 		81B87D6529F012FD0042A39C /* TableSearchWorkerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSearchWorkerImpl.swift; sourceTree = "<group>"; };
@@ -154,6 +157,8 @@
 		81325C7529D101640063F0E1 /* BulAR */ = {
 			isa = PBXGroup;
 			children = (
+				81AC739C2AAFDBFB00D8D22B /* Info.plist */,
+				81AC739A2AAFDBE500D8D22B /* OpenDyslexic-Regular.otf */,
 				817285B42AAE6D400006DFD3 /* Onboarding */,
 				8171605C2A08497100A08EFE /* GoogleService-Info.plist */,
 				813EEAA129F6EC8D00A0CE97 /* MedicineDetails */,
@@ -359,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81325C8329D101660063F0E1 /* LaunchScreen.storyboard in Resources */,
+				81AC739B2AAFDBE600D8D22B /* OpenDyslexic-Regular.otf in Resources */,
 				81325C8029D101660063F0E1 /* Assets.xcassets in Resources */,
 				8171605D2A08497100A08EFE /* GoogleService-Info.plist in Resources */,
 			);
@@ -582,9 +588,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = TX88D8XM39;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BulAR/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -613,9 +621,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = TX88D8XM39;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BulAR/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

@@ -11,6 +11,7 @@ import UIKit
 class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
     var viewController: MedicineDetailsViewController?
     var bulaUrl = ""
+    var isFontChanged = false
     
     lazy var closeButton: UIButton = {
         let button = UIButton(type: .system)
@@ -177,6 +178,16 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         return button
     }()
     
+    lazy var fontButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "character.bubble"), for: .normal)
+        button.addTarget(self, action: #selector(changeFont), for: .touchUpInside)
+        button.tintColor = .black
+        button.isAccessibilityElement = true
+        button.accessibilityLabel = "Botão para alterar fonte do aplicativo"
+        return button
+    }()
+    
     lazy var shareButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
@@ -211,6 +222,7 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
     
     func setupHierarchy() {
         addSubview(closeButton)
+        addSubview(fontButton)
         addSubview(shareButton)
         addSubview(favoriteButton)
         
@@ -239,9 +251,15 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         closeButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
         closeButton.widthAnchor.constraint(equalToConstant: 32).isActive = true
         
+        fontButton.translatesAutoresizingMaskIntoConstraints = false
+        fontButton.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor).isActive = true
+        fontButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
+        fontButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        fontButton.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        
         shareButton.translatesAutoresizingMaskIntoConstraints = false
-        shareButton.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor).isActive = true
-        shareButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
+        shareButton.centerYAnchor.constraint(equalTo: fontButton.centerYAnchor).isActive = true
+        shareButton.trailingAnchor.constraint(equalTo: fontButton.leadingAnchor, constant: -8).isActive = true
         shareButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
         shareButton.widthAnchor.constraint(equalToConstant: 32).isActive = true
         
@@ -262,7 +280,7 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
         contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
         contentView.bottomAnchor.constraint(equalTo: bulaCompleta.bottomAnchor).isActive = true
-    
+        
         
         nameTitle.translatesAutoresizingMaskIntoConstraints = false
         
@@ -365,15 +383,51 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         viewController?.closeModal()
     }
     
-     @objc
+    @objc
     private func shareMedicine() {
         viewController?.shareMedicine()
     }
     
     @objc
-   private func favoriteMedicine() {
-       viewController?.favoriteMedicine()
-   }
+    private func changeFont() {
+        isFontChanged.toggle()
+        
+        changeFontLogic()
+    }
+    
+    private func changeFontLogic() {
+        let newFont: UIFont
+        if isFontChanged {
+            if let customFont = UIFont(name: "OpenDyslexic-Regular", size: 16.0) {
+                newFont = customFont
+            } else {
+                newFont = UIFont.systemFont(ofSize: 17.0)
+            }
+        } else {
+            newFont = UIFont.systemFont(ofSize: 17.0)
+        }
+        
+        nameTitle.font = newFont.withSize(34)
+        caption.font = newFont.withSize(13)
+        
+        indicacaoTitle.font = newFont.withSize(27)
+        indicacao.font = newFont.withSize(18)
+        posologiaTitle.font = newFont.withSize(27)
+        posologia.font = newFont.withSize(18)
+        contraindicacaoTitle.font = newFont.withSize(27)
+        contraindicacao.font = newFont.withSize(18)
+        colateralTitle.font = newFont.withSize(27)
+        colateral.font = newFont.withSize(18)
+        fabricanteTitle.font = newFont.withSize(27)
+        fabricante.font = newFont.withSize(18)
+        
+        self.setNeedsLayout()
+    }
+    
+    @objc
+    private func favoriteMedicine() {
+        viewController?.favoriteMedicine()
+    }
     
     @objc func openUrlSafari() {
         if let url = URL(string: bulaUrl) {
@@ -388,4 +442,9 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
             favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
         }
     }
+}
+
+
+extension UILabel {
+    
 }
