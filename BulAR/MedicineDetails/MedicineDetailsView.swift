@@ -140,6 +140,28 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         return label
     }()
     
+    lazy var interacaoTitle: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 19)
+        label.text = "Interações Medicamentosas"
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontForContentSizeCategory = true
+        label.font = UIFont.preferredFont(forTextStyle: .title1)
+        label.isAccessibilityElement = true
+        return label
+    }()
+    
+    lazy var interacao: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontForContentSizeCategory = true
+        label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.isAccessibilityElement = true
+        return label
+    }()
+    
     lazy var fabricanteTitle: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 19)
@@ -230,14 +252,20 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         scrollView.addSubview(contentView)
         contentView.addSubview(nameTitle)
         contentView.addSubview(caption)
-        contentView.addSubview(indicacaoTitle)
-        contentView.addSubview(indicacao)
-        contentView.addSubview(posologiaTitle)
-        contentView.addSubview(posologia)
-        contentView.addSubview(contraindicacaoTitle)
-        contentView.addSubview(contraindicacao)
+        
         contentView.addSubview(colateralTitle)
         contentView.addSubview(colateral)
+        contentView.addSubview(posologiaTitle)
+        contentView.addSubview(posologia)
+        contentView.addSubview(interacaoTitle)
+        contentView.addSubview(interacao)
+        
+        contentView.addSubview(indicacaoTitle)
+        contentView.addSubview(indicacao)
+
+        contentView.addSubview(contraindicacaoTitle)
+        contentView.addSubview(contraindicacao)
+        
         contentView.addSubview(fabricanteTitle)
         contentView.addSubview(fabricante)
         contentView.addSubview(bulaCompleta)
@@ -294,20 +322,20 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         caption.leadingAnchor.constraint(equalTo: nameTitle.leadingAnchor).isActive = true
         caption.trailingAnchor.constraint(equalTo: nameTitle.trailingAnchor).isActive = true
         
-        indicacaoTitle.translatesAutoresizingMaskIntoConstraints = false
+        colateralTitle.translatesAutoresizingMaskIntoConstraints = false
         
-        indicacaoTitle.topAnchor.constraint(equalTo: caption.bottomAnchor, constant: 16).isActive = true
-        indicacaoTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
-        indicacaoTitle.trailingAnchor.constraint(equalTo: nameTitle.trailingAnchor).isActive = true
+        colateralTitle.topAnchor.constraint(equalTo: caption.bottomAnchor, constant: 16).isActive = true
+        colateralTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
+        colateralTitle.trailingAnchor.constraint(equalTo: nameTitle.trailingAnchor).isActive = true
         
-        indicacao.translatesAutoresizingMaskIntoConstraints = false
+        colateral.translatesAutoresizingMaskIntoConstraints = false
         
-        indicacao.topAnchor.constraint(equalTo: indicacaoTitle.bottomAnchor, constant: 4).isActive = true
-        indicacao.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
-        indicacao.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        colateral.topAnchor.constraint(equalTo: colateralTitle.bottomAnchor, constant: 4).isActive = true
+        colateral.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
+        colateral.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         
         posologiaTitle.translatesAutoresizingMaskIntoConstraints = false
-        posologiaTitle.topAnchor.constraint(equalTo: indicacao.bottomAnchor, constant: 16).isActive = true
+        posologiaTitle.topAnchor.constraint(equalTo: colateral.bottomAnchor, constant: 16).isActive = true
         posologiaTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
         posologiaTitle.trailingAnchor.constraint(equalTo: nameTitle.trailingAnchor).isActive = true
         
@@ -316,8 +344,28 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         posologia.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
         posologia.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         
+        interacaoTitle.translatesAutoresizingMaskIntoConstraints = false
+        interacaoTitle.topAnchor.constraint(equalTo: posologia.bottomAnchor, constant: 16).isActive = true
+        interacaoTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
+        interacaoTitle.trailingAnchor.constraint(equalTo: nameTitle.trailingAnchor).isActive = true
+        
+        interacao.translatesAutoresizingMaskIntoConstraints = false
+        interacao.topAnchor.constraint(equalTo: interacaoTitle.bottomAnchor, constant: 4).isActive = true
+        interacao.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
+        interacao.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        
+        indicacaoTitle.translatesAutoresizingMaskIntoConstraints = false
+        indicacaoTitle.topAnchor.constraint(equalTo: interacao.bottomAnchor, constant: 16).isActive = true
+        indicacaoTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
+        indicacaoTitle.trailingAnchor.constraint(equalTo: nameTitle.trailingAnchor).isActive = true
+        
+        indicacao.translatesAutoresizingMaskIntoConstraints = false
+        indicacao.topAnchor.constraint(equalTo: indicacaoTitle.bottomAnchor, constant: 4).isActive = true
+        indicacao.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
+        indicacao.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        
         contraindicacaoTitle.translatesAutoresizingMaskIntoConstraints = false
-        contraindicacaoTitle.topAnchor.constraint(equalTo: posologia.bottomAnchor, constant: 16).isActive = true
+        contraindicacaoTitle.topAnchor.constraint(equalTo: indicacao.bottomAnchor, constant: 16).isActive = true
         contraindicacaoTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
         contraindicacaoTitle.trailingAnchor.constraint(equalTo: nameTitle.trailingAnchor).isActive = true
         
@@ -326,18 +374,8 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         contraindicacao.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
         contraindicacao.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         
-        colateralTitle.translatesAutoresizingMaskIntoConstraints = false
-        colateralTitle.topAnchor.constraint(equalTo: contraindicacao.bottomAnchor, constant: 16).isActive = true
-        colateralTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
-        colateralTitle.trailingAnchor.constraint(equalTo: nameTitle.trailingAnchor).isActive = true
-        
-        colateral.translatesAutoresizingMaskIntoConstraints = false
-        colateral.topAnchor.constraint(equalTo: colateralTitle.bottomAnchor, constant: 4).isActive = true
-        colateral.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
-        colateral.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        
         fabricanteTitle.translatesAutoresizingMaskIntoConstraints = false
-        fabricanteTitle.topAnchor.constraint(equalTo: colateral.bottomAnchor, constant: 16).isActive = true
+        fabricanteTitle.topAnchor.constraint(equalTo: contraindicacao.bottomAnchor, constant: 16).isActive = true
         fabricanteTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
         fabricanteTitle.trailingAnchor.constraint(equalTo: nameTitle.trailingAnchor).isActive = true
         
@@ -373,6 +411,7 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         posologia.text = bula.posologia
         contraindicacao.text = bula.contraindicacao
         colateral.text = bula.efeitosColaterais
+        interacao.text = bula.interacoesMedicamentosas
         bulaUrl = bula.bulaCompletaURL
         
         fabricante.text = "\(bula.fabricante.nome)\n\(bula.fabricante.endereco)\n\(bula.fabricante.email)\n\(bula.fabricante.telefone)"
@@ -420,6 +459,8 @@ class MedicineDetailsViewImpl: UIView, MedicineDetailsView {
         colateral.font = newFont.withSize(18)
         fabricanteTitle.font = newFont.withSize(27)
         fabricante.font = newFont.withSize(18)
+        interacaoTitle.font = newFont.withSize(27)
+        interacao.font = newFont.withSize(18)
         
         self.setNeedsLayout()
     }

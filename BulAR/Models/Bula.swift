@@ -14,6 +14,7 @@ public struct Bula: Codable {
     var posologia: String
     var contraindicacao: String
     var efeitosColaterais: String
+    var interacoesMedicamentosas: String
     var imagesURL: [String]
     var bulaCompletaURL: String
     var fabricante: Fabricante
@@ -26,6 +27,7 @@ public struct Bula: Codable {
         case posologia
         case contraindicacao
         case efeitosColaterais
+        case interacoesMedicamentosas
         case imagesURL
         case bulaCompletaURL
         case fabricante
